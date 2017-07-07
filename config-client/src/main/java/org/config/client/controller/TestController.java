@@ -29,6 +29,12 @@ public class TestController {
 		return p;
 	}
 	
+	@GetMapping("/name")
+	public String name(@Value("${spring.application.name}")String name){
+		return name;
+	}
+	
+	
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}

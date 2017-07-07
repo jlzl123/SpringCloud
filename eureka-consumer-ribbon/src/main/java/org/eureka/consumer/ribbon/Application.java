@@ -2,6 +2,7 @@ package org.eureka.consumer.ribbon;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -9,10 +10,11 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableDiscoveryClient
 @SpringBootApplication
+@EnableCircuitBreaker//@EnableCircuitBreaker注解开启断路器功能
 public class Application {
 
 	@Bean
-	@LoadBalanced
+	@LoadBalanced//加载负载均衡
 	public RestTemplate restTemplate(){
 		return new RestTemplate();
 	}
